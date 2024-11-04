@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Interativo: Sera que tu é bom?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f0e5ff, #e1d8f3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .header {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            color: #6d28d9;
+            margin-bottom: 20px;
+        }
+        .clue, .invite-message, .riddle-input {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 15px;
+        }
+        .invite-message {
+            display: none;
+        }
+        .signature {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #6d28d9;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">Será que tu é bom?</div>
+    
+    <!-- Primeira etapa: introdução do enigma -->
+    <p class="clue">Bem-vindo ao desafio,vamos ver se você é digno, resolvendo esses enigmas.</p>
+    <p class="clue">Primeiro enigma: "Sou tão leve que o vento me leva, mas tão poderosa que carrego segredos. Quem sou eu?"</p>
+    <input type="text" id="riddle1" class="riddle-input" placeholder="Digite sua resposta...">
+    <button onclick="checkRiddle1()" class="riddle1-btn">Verificar</button>
+    <p id="hint1" class="hidden">Dica: Algo que você pode escrever, mas não pode segurar por muito tempo.</p>
+
+    <!-- Segunda etapa: pista aparece após resposta correta -->
+    <div id="secondRiddle" class="hidden">
+        <p class="clue">Ótimo! Agora o segundo enigma: "Tenho chaves, mas não tranco portas. E às vezes te ajudo a resolver problemas. Quem sou eu?"</p>
+        <input type="text" id="riddle2" class="riddle-input" placeholder="Digite sua resposta...">
+        <button onclick="checkRiddle2()" class="riddle2-btn">Verificar</button>
+        <p id="hint2" class="hidden">Dica: Pense em algo que você usa no computador!</p>
+    </div>
+
+    <!-- Terceira etapa: pista aparece após resposta correta -->
+    <div id="thirdRiddle" class="hidden">
+        <p class="clue">Último enigma: "Tenho números de 1 a 31, mas não sou matemático. A cada mês você volta a me ver. Quem sou eu?"</p>
+        <input type="text" id="riddle3" class="riddle-input" placeholder="Digite sua resposta...">
+        <button onclick="checkRiddle3()" class="riddle3-btn">Verificar</button>
+        <p id="hint3" class="hidden">Dica: Algo que você vê todo mês para se organizar!</p>
+    </div>
+
+    <!-- Mensagem final -->
+    <div class="invite-message">
+        <p class="invite-message">
+            Querida Professora [Nome da Professora],<br><br>
+            Você é muito mais do que uma professora para nós. Em cada aula, ensinamento e momento compartilhado, deixou uma marca inesquecível em nossos corações ❤️.<br><br>
+            Por isso, é com imenso carinho que nós, da turma de [Nome ou Ano da Turma], convidamos você para ser nossa paraninfa e compartilhar esse momento único conosco. Seu apoio e presença fariam desse dia ainda mais memorável.<br><br>
+            Com todo o carinho,<br>Turma de [Ano ou Curso]
+        </p>
+        <p class="signature">💖 Salve Karina!
+
+            A gente não podia deixar de te chamar para ser nossa paraninfa. Depois de tudo que passamos juntos, das aulas, das broncas, das risadas e dos conselhos, nada faz mais sentido do que dividir esse momento com você. A senhora fez parte de cada conquista nossa, e a gente quer que esteja com a gente nessa celebração, dando aquela força e, quem sabe, mais uma daquelas palavras inspiradoras que sempre marcam.
+            
+            Topa embarcar com a gente mais uma vez?
+            
+            Com carinho 3°B💖</p>
+    </div>
+</div>
+
+<script>
+    function checkRiddle1() {
+        const answer1 = document.getElementById("riddle1").value.toLowerCase();
+        if (answer1 === "palavra" || answer1 === "mensagem") {
+            document.getElementById("secondRiddle").classList.remove("hidden");
+            document.querySelector(".riddle1-btn").classList.add("hidden");
+            document.getElementById("hint1").classList.add("hidden");
+        } else {
+            document.getElementById("hint1").classList.remove("hidden");
+        }
+    }
+
+    function checkRiddle2() {
+        const answer2 = document.getElementById("riddle2").value.toLowerCase();
+        if (answer2 === "teclado") {
+            document.getElementById("thirdRiddle").classList.remove("hidden");
+            document.querySelector(".riddle2-btn").classList.add("hidden");
+            document.getElementById("hint2").classList.add("hidden");
+        } else {
+            document.getElementById("hint2").classList.remove("hidden");
+        }
+    }
+
+    function checkRiddle3() {
+        const answer3 = document.getElementById("riddle3").value.toLowerCase();
+        if (answer3 === "calendário" || answer3 === "calendario") {
+            document.querySelector(".invite-message").style.display = "block";
+            document.querySelector(".riddle3-btn").classList.add("hidden");
+            document.getElementById("hint3").classList.add("hidden");
+        } else {
+            document.getElementById("hint3").classList.remove("hidden");
+        }
+    }
+</script>
+
+</body>
+</html>
